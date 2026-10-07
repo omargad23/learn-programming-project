@@ -1,0 +1,41 @@
+:root{--c:#00e5ff;--bg:#000;--tx:#e8f1f5}
+*{box-sizing:border-box;margin:0}
+body{background:#000;color:var(--tx);font:16px/1.5 'Space Grotesk',sans-serif;min-height:100vh;overflow-x:hidden}
+#rain{position:fixed;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);z-index:-2;opacity:.55;transition:transform .15s ease-out}
+#glow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:-1;left:0;top:0;
+ background:radial-gradient(circle,color-mix(in srgb,var(--c) 28%,transparent),transparent 65%);transition:background .6s}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 5vw}
+.brand{font:700 26px 'JetBrains Mono',monospace;color:var(--c);text-decoration:none;text-shadow:0 0 18px var(--c);transition:color .6s}
+#total{font-family:'JetBrains Mono',monospace;color:#9fb3bb}
+main{max-width:1100px;margin:0 auto;padding:2vh 5vw 8vh}
+h1{font-size:clamp(34px,6vw,64px);line-height:1.05;margin-bottom:12px}
+.sub{color:#9fb3bb;margin-bottom:36px;max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px}
+.tile{position:relative;height:230px;border:1px solid color-mix(in srgb,var(--k) 55%,transparent);border-radius:18px;
+ background:rgba(0,0,0,.65);backdrop-filter:blur(6px);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+ overflow:hidden;transition:transform .35s cubic-bezier(.2,.9,.3,1.3),box-shadow .35s;animation:pop .7s backwards}
+.tile:nth-child(2){animation-delay:.1s}.tile:nth-child(3){animation-delay:.2s}.tile:nth-child(4){animation-delay:.3s}.tile:nth-child(5){animation-delay:.4s}
+@keyframes pop{from{opacity:0;transform:translateY(40px) scale(.8) rotateX(40deg)}}
+.tile:hover{transform:translateY(-10px) scale(1.04);box-shadow:0 0 40px color-mix(in srgb,var(--k) 60%,transparent)}
+.logo{width:84px;height:84px;border-radius:20px;display:grid;place-items:center;font:700 30px 'JetBrains Mono',monospace;color:#000;background:var(--k);object-fit:contain;transition:transform .4s}
+.tile:hover .logo{transform:rotate(-8deg) scale(.8) translateY(-14px)}
+.tile b{font-size:20px}
+.learn{position:absolute;left:14px;right:14px;bottom:-60px;padding:10px;border-radius:12px;background:var(--k);color:#000;text-align:center;font-weight:700;text-decoration:none;transition:bottom .35s}
+.tile:hover .learn{bottom:14px}
+.panel{background:rgba(0,0,0,.7);backdrop-filter:blur(6px);border:1px solid color-mix(in srgb,var(--c) 50%,transparent);border-radius:18px;padding:26px;margin-bottom:24px;animation:pop .5s}
+.btn{display:inline-block;background:var(--c);color:#000;border:0;border-radius:10px;padding:11px 20px;font:700 15px 'Space Grotesk';cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 24px var(--c)}
+.btn.ghost{background:none;color:var(--c);border:1px solid var(--c)}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:14px}
+.lv{border:1px solid #333;border-radius:14px;padding:18px;background:#050505}
+.lv.locked{opacity:.4}
+.opt{display:block;width:100%;text-align:left;margin:9px 0;padding:14px 16px;border-radius:12px;border:1px solid #333;background:#050505;color:var(--tx);font:15px 'JetBrains Mono',monospace;cursor:pointer;transition:.2s}
+.opt:hover{border-color:var(--c);transform:translateX(6px)}
+.opt.ok{background:#0b5;color:#000;border-color:#0b5}.opt.no{background:#c23;border-color:#c23;animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.bar{height:6px;background:#222;border-radius:9px;margin-bottom:18px;overflow:hidden}.bar i{display:block;height:100%;background:var(--c);transition:width .4s}
+h2{margin-bottom:8px}.muted{color:#9fb3bb}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.logo.pic{background:none;border-radius:0;width:104px;height:104px;filter:drop-shadow(0 0 14px var(--k))}
+.tile:hover .logo.pic{transform:scale(.85) translateY(-12px)}
